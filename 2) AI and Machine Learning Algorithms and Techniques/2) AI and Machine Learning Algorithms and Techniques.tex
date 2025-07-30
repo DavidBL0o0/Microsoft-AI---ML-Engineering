@@ -1,0 +1,237 @@
+\documentclass[11pt,spanish]{article}
+
+\usepackage[spanish]{babel}
+\usepackage{epsfig,graphicx}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage[hmarginratio=6:5,top=32mm,columnsep=11mm,textwidth=178mm]{geometry}
+\usepackage[makeroom]{cancel} %FT - para incluir simplificaciones en ecuaciones
+\usepackage{multicol} %FT - para generar varias columnas en una seccion del documento
+\usepackage[small,labelfont=bf,up,textfont=it,up]{caption} %
+%\usepackage[hang,small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+\usepackage{float} % Required for tables and figures in the multi-column environment - they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
+\usepackage{hyperref} % For hyperlinks in the PDF
+\usepackage{paralist} % Used for the compact item environment which makes bullet points with less space between them
+
+\addcontentsline{toc}{section}{Title of the section}
+\usepackage{titlesec} % Allows customization of titles
+\usepackage{fancyhdr} % Headers and footers
+\usepackage{wrapfig}
+
+\setlength{\parindent}{0pt} % Configura la sangría a cero
+
+\usepackage{graphicx}
+
+\usepackage{listings}
+
+\usepackage{xcolor}
+%\usepackage{animate}
+%\usepackage{tikz}
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily,
+    frame=single,
+    breaklines=true,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    showstringspaces=false
+}
+
+\graphicspath{ {images/} }
+
+
+
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\renewcommand{\headrulewidth}{3pt}
+\renewcommand{\footrulewidth}{0pt}
+%-----------------------------------------------------------------------------------------
+% AGREGUE AQUÍ UNA DE LAS ÁREAS DEFINIDAS EN LA PÁGINA WEB DEL SIMPOSIO www.sochifi2014.udec.cl
+%-----------------------------------------------------------------------------------------
+
+
+\fancyhead[L]{\small IA \\ } % Custom header text
+\fancyhead[R]{{\bf Coursera} \\   \\  Santiago, Chile} % Custom header text
+\fancyfoot[RO,L]{\thepage} % Custom footer text
+
+\linespread{1} %
+
+%----------------------------------------------------------------------------------------
+%	TÍTULO Y AUTORES. SUBRAYAR AL EXPOSITOR
+%----------------------------------------------------------------------------------------
+
+\title{\vspace{-5mm}\fontsize{16pt}{10pt}\selectfont \textbf{AI and Machine Learning Algorithms and Techniques}} % Article title
+%*\dagger
+\vspace{-3mm}
+\author{
+\normalsize \underline{David}$^{1}$
+ \\ \vspace{-1mm}
+\small  $^1$ Santiago. }
+%\\ Institución 1
+%\small       $^2$Comisión Chilena de Energía Nuclear, Nueva Bilbao 12501, Santiago.         \\ %Institución 2
+%\small $^1$d.basanteslpez@uandresbello.edu, $^2$joaquin.peralta@unab.cl,$^3$sergio.davis@cchen.cl}
+\date{}
+\pagestyle{empty}
+%----------------------------------------------------------------------------------------
+
+
+\usepackage[numbers]{natbib}
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy} % All pages have headers and footers
+\pagenumbering{gobble}
+
+
+\begin{multicols}{2}
+
+\setlength{\parskip}{2mm}
+\setlength{\intextsep}{0pt} 
+
+
+% filepath: d:\6) CURSOS\Microsoft AI & ML Engineering\2) AI and Machine Learning Algorithms and Techniques\2) AI and Machine Learning Algorithms and Techniques.tex
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+
+\section{Evaluation Metrics for Supervised Learning Models}
+
+\subsection{Introduction}
+Evaluation metrics play a critical role in assessing the performance of supervised learning models. These metrics help us understand how well a model predicts outcomes and whether it can generalize to unseen data. Different tasks, such as classification and regression, require different evaluation metrics.
+
+By the end of this reading, you’ll be able to:
+\begin{itemize}
+    \item \textbf{Identify key evaluation metrics:} Understand and describe the most commonly used evaluation metrics for classification and regression models.
+    \item \textbf{Apply metrics to model performance:} Evaluate the performance of ML models using appropriate metrics such as accuracy, precision, recall, mean squared error (MSE), and R-squared.
+    \item \textbf{Choose the right metric for the task:} Select the most suitable evaluation metric based on the specific problem and dataset characteristics, ensuring accurate model assessment.
+\end{itemize}
+
+\subsection{Evaluation Metrics for Classification Models}
+Classification models predict discrete outcomes, such as whether an email is spam or not, or whether a customer will churn or remain. Below are some key evaluation metrics used to assess the performance of classification models:
+
+\subsubsection{Accuracy}
+Accuracy measures the percentage of correct predictions out of all predictions made.
+\[
+\text{Accuracy} = \frac{\text{Number of Correct Predictions}}{\text{Total Number of Predictions}}
+\]
+\textbf{Example:} If a model correctly predicts 90 out of 100 instances, its accuracy is 90\%. However, accuracy may not always be the best metric for imbalanced datasets.
+
+\subsubsection{Precision}
+Precision measures the percentage of true positive predictions out of all positive predictions that the model makes. It is important in cases where false positives are costly.
+\[
+\text{Precision} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
+\]
+\textbf{Example:} In spam detection, precision is the proportion of emails predicted as spam that are actually spam.
+
+\subsubsection{Recall (Sensitivity or True Positive Rate)}
+Recall measures the percentage of true positive predictions out of all actual positives. It is important when the cost of missing positive instances is high.
+\[
+\text{Recall} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
+\]
+\textbf{Example:} In a cancer detection model, recall is the proportion of actual cancer cases that the model correctly identifies.
+
+\subsubsection{F1 Score}
+The F1 score is the harmonic mean of precision and recall. It provides a balanced metric when both precision and recall are important, especially for imbalanced datasets.
+\[
+\text{F1 Score} = \frac{2 \times \text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+\]
+\textbf{Example:} A model with high precision but low recall or vice versa will have a lower F1 score.
+
+\subsubsection{Confusion Matrix}
+A confusion matrix is a table used to summarize the performance of a classification model. It shows the number of true positives (TP), true negatives (TN), false positives (FP), and false negatives (FN).
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+ & \textbf{Predicted Positive} & \textbf{Predicted Negative} \\
+\hline
+\textbf{Actual Positive} & True Positive (TP) & False Negative (FN) \\
+\hline
+\textbf{Actual Negative} & False Positive (FP) & True Negative (TN) \\
+\hline
+\end{tabular}
+\end{center}
+
+From this matrix, you can calculate accuracy, precision, recall, and other metrics.
+
+\subsubsection{ROC Curve and AUC}
+The receiver operating characteristic (ROC) curve plots the true positive rate (recall) against the false positive rate at different threshold levels. The area under the curve (AUC) measures the overall performance of the classifier. AUC ranges from 0 to 1, where a value closer to 1 indicates a better-performing model.
+
+\subsection{Evaluation Metrics for Regression Models}
+Regression models predict continuous values, such as house prices or temperatures. The following metrics are commonly used to evaluate regression models:
+
+\subsubsection{Mean Squared Error (MSE)}
+MSE measures the average squared difference between the predicted and actual values.
+\[
+\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+\]
+\textbf{Example:} If the predicted price is \$200,000 and the actual price is \$250,000, the MSE for that prediction is $2.5 \times 10^9$.
+
+\subsubsection{Root Mean Squared Error (RMSE)}
+RMSE is the square root of the mean squared error, which brings the error metric back to the same units as the target variable.
+\[
+\text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
+\]
+\textbf{Example:} If the MSE is \$625,000,000, then the RMSE will be \$25,000.
+
+\subsubsection{Mean Absolute Error (MAE)}
+MAE measures the average absolute difference between the predicted and actual values.
+\[
+\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
+\]
+\textbf{Example:} In a weather forecasting model, MAE tells you the average difference between the predicted and actual temperatures.
+
+\subsubsection{R-squared (Coefficient of Determination)}
+R-squared explains the proportion of variance in the dependent variable that is predictable from the independent variable(s).
+\[
+R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
+\]
+\textbf{Example:} An $R^2$ value of 0.9 means that 90\% of the variance in house prices is explained by the model’s input features.
+
+\subsubsection{Adjusted R-squared}
+Adjusted R-squared adjusts the $R^2$ value based on the number of features in the model.
+\[
+\text{Adjusted } R^2 = 1 - \left( \frac{(1 - R^2)(n - 1)}{n - p - 1} \right)
+\]
+Where $n$ is the number of data points and $p$ is the number of predictors.
+
+\textbf{Example:} If adding more features to a model decreases the adjusted $R^2$, it suggests that the additional features are not improving the model.
+
+\subsection{Choosing the Right Evaluation Metric}
+Choosing the right evaluation metric depends on the problem and the nature of the data. For instance:
+\begin{itemize}
+    \item For imbalanced classification problems, use precision, recall, F1 score, or ROC AUC instead of accuracy.
+    \item For regression models, if large errors are particularly undesirable, consider using RMSE or MSE. If you want a metric that is less sensitive to outliers, use MAE.
+    \item For complex models, look at $R^2$ and adjusted $R^2$ to assess how well the model explains the variance in the target variable.
+\end{itemize}
+
+\subsection{Conclusion}
+Evaluation metrics are essential for understanding and improving ML models. By using the right metrics, you can accurately assess model performance, make necessary adjustments, and ensure that your model is well suited for the task at hand. Whether you're working with classification or regression problems, these metrics will provide you with the insight needed to create reliable and effective machine learning solutions.
+
+
+
+
+
+
+
+
+
+\section{Model evaluation metrics}
+
+\subsection{aa}
+
+
+
+
+
+
+\end{multicols}
+\end{document}
